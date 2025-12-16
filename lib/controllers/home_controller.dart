@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import '../models/data_item_model.dart';
 import '../models/menu_item_model.dart';
+import '../views/menu/menu_detail_view.dart';
 
 class HomeController extends GetxController {
   // Observable state
@@ -42,10 +43,6 @@ class HomeController extends GetxController {
 
   // Handle menu item tap
   void onMenuItemTap(MenuItemModel item) {
-    Get.snackbar(
-      item.title,
-      'Opening ${item.title}',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    Get.to(() => MenuDetailView(title: item.title));
   }
 }
