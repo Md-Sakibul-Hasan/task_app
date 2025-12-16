@@ -1,6 +1,8 @@
 // Controller - Handles login logic
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../views/home/home_view.dart';
+import '../bindings/home_binding.dart';
 
 class AuthController extends GetxController {
   // Text editing controllers
@@ -60,8 +62,11 @@ class AuthController extends GetxController {
         colorText: Colors.white,
       );
 
-      // TODO: Navigate to home screen
-      // Get.offAllNamed('/home');
+      // Navigate to home screen
+      Get.off(
+        () => const HomeView(),
+        binding: HomeBinding(),
+      );
     } catch (e) {
       Get.snackbar(
         'Error',
