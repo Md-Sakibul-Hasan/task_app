@@ -1,17 +1,20 @@
 // Controller - Handles home screen logic
 import 'package:get/get.dart';
 import '../models/data_item_model.dart';
+import '../models/menu_item_model.dart';
 
 class HomeController extends GetxController {
   // Observable state
   final RxBool hasNotifications = true.obs;
   final RxList<DataItemModel> dataItems = <DataItemModel>[].obs;
+  final RxList<MenuItemModel> menuItems = <MenuItemModel>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     // Load sample data
     dataItems.value = DataItemModel.getSampleData();
+    menuItems.value = MenuItemModel.getSampleData();
   }
 
   // Handle notification press
@@ -33,6 +36,15 @@ class HomeController extends GetxController {
     Get.snackbar(
       item.title,
       'Status: ${item.statusText}',
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
+
+  // Handle menu item tap
+  void onMenuItemTap(MenuItemModel item) {
+    Get.snackbar(
+      item.title,
+      'Opening ${item.title}',
       snackPosition: SnackPosition.BOTTOM,
     );
   }
