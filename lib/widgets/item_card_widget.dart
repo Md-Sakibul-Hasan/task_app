@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+
+class ItemCardWidget extends StatelessWidget {
+  final String title;
+  final String? statusText;
+  final Color? statusColor;
+  final IconData icon;
+  final Color iconBackgroundColor;
+  final String data1Label;
+  final String data1Value;
+  final String data2Label;
+  final String data2Value;
+  final VoidCallback? onTap;
+
+  const ItemCardWidget({
+    super.key,
+    required this.title,
+    this.statusText,
+    this.statusColor,
+    required this.icon,
+    this.iconBackgroundColor = const Color(0xFFFF9500),
+    required this.data1Label,
+    required this.data1Value,
+    required this.data2Label,
+    required this.data2Value,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: const Color(0xFFE5F4FE),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: const Color(0xFFA5A7B9), width: 1),
+        ),
+        child: Row(
+          children: [
+            // Icon
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: iconBackgroundColor,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 24,
+              ),
+            ),
+            const SizedBox(width: 12),
+            // Data
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Title with status
+                  Row(
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      if (statusText != null) ...[
+                        const SizedBox(width: 4),
+                        Text(
+                          '($statusText)',
+                          style: TextStyle(
+                            color: statusColor ?? const Color(0xFF0096FC),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  // Data 1
+                  Row(
+                    children: [
+                      Text(
+                        '$data1Label : ',
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        data1Value,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  // Data 2
+                  Row(
+                    children: [
+                      Text(
+                        '$data2Label : ',
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        data2Value,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            // Chevron icon
+            const Icon(
+              Icons.chevron_right,
+              color: Colors.grey,
+              size: 24,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
