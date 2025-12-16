@@ -15,8 +15,6 @@ class HomeView extends StatelessWidget {
         backgroundColor: const Color(0xFFE5F4FE),
         appBar: CustomAppBar(
           title: 'SCM',
-          hasNotificationBadge: controller.hasNotifications.value,
-          onBackPressed: controller.onBackPressed,
           onNotificationPressed: controller.onNotificationPressed,
         ),
         body: Column(
@@ -107,73 +105,143 @@ class HomeView extends StatelessWidget {
                     height: 1,
                     thickness: 1,
                   ),
-                  const SizedBox(height: 24),
-                  // Electricity label
-                  const Text(
-                    'Electricity',
-                    style: TextStyle(
-                      color: Color(0xFF979797),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Divider(
-                      color: Color(0xFF979797),
-                      height: 1,
-                      thickness: 1,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  // Circular progress indicator
-                  SizedBox(
-                    width: 200,
-                    height: 200,
-                    child: Stack(
-                      alignment: Alignment.center,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Column(
                       children: [
-                        // Circle border
-                        SizedBox(
-                          width: 150,
-                          height: 150,
-                          child: CircularProgressIndicator(
-                            value: 1,
-                            strokeWidth: 20,
-                            backgroundColor: Colors.grey[200],
-                            valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color(0xFF398FC9),
-                            ),
+                        const SizedBox(height: 24),
+                        // Electricity label
+                        const Text(
+                          'Electricity',
+                          style: TextStyle(
+                            color: Color(0xFF979797),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        // Center text
-                        const Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Total Power',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              '5.53 kw',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                        const SizedBox(height: 4),
+                        const Divider(
+                          color: Color(0xFF979797),
+                          height: 1,
+                          thickness: 1,
                         ),
+                        const SizedBox(height: 10),
+                        // Circular progress indicator
+                        SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              // Circle border
+                              SizedBox(
+                                width: 150,
+                                height: 150,
+                                child: CircularProgressIndicator(
+                                  value: 1,
+                                  strokeWidth: 20,
+                                  backgroundColor: Colors.grey[200],
+                                  valueColor:
+                                      const AlwaysStoppedAnimation<Color>(
+                                    Color(0xFF398FC9),
+                                  ),
+                                ),
+                              ),
+                              // Center text
+                              const Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'Total Power',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text(
+                                    '5.53 kw',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        // Source/Load Toggle
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    // TODO: Switch to Source
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF0096FC),
+                                      borderRadius: BorderRadius.circular(25),
+                                    ),
+                                    child: const Text(
+                                      'Source',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    // TODO: Switch to Load
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12),
+                                    child: const Text(
+                                      'Load',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Container(
+                          height: 2,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFD1D1D6),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        const SizedBox(height: 32),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 32),
+                  )
                 ],
               ),
             ),
