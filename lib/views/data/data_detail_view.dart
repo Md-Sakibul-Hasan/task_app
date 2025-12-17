@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/data_detail_controller.dart';
+import '../../widgets/circular_meter_widget.dart';
 import '../../widgets/custom_app_bar.dart';
 
 class DataDetailView extends StatelessWidget {
@@ -196,7 +197,7 @@ class DataDetailView extends StatelessWidget {
       constraints: BoxConstraints(
         minHeight: MediaQuery.of(Get.context!).size.height,
       ),
-      padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+      padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -204,6 +205,30 @@ class DataDetailView extends StatelessWidget {
           color: const Color(0xFFB6B8D0),
           width: 1,
         ),
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Circular Progress Meter
+          CircularMeterWidget(
+            progress: 0.65,
+            value: '55.00',
+            unit: 'kWh/Sqft',
+            width: 200,
+            height: 200,
+            backgroundColor: Color(0xFFE0F2FF),
+            progressColor: Color(0xFF4E91FD),
+            strokeWidth: 16,
+            valueFontSize: 20,
+            unitFontSize: 14,
+            valueColor: Colors.black,
+            unitColor: Colors.black,
+            valueFontWeight: FontWeight.bold,
+            unitFontWeight: FontWeight.w500,
+          ),
+          SizedBox(height: 30),
+          // Additional content can go here
+        ],
       ),
     );
   }
@@ -222,99 +247,6 @@ class DataDetailView extends StatelessWidget {
           color: const Color(0xFFB6B8D0),
           width: 1,
         ),
-      ),
-    );
-  }
-
-  Widget _buildDataRow({
-    required String label,
-    required String value,
-    required Color color,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            color: Colors.grey,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: color.withOpacity(0.3), width: 1),
-          ),
-          child: Text(
-            value,
-            style: TextStyle(
-              color: color,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRevenueCard({
-    required String title,
-    required String amount,
-    required IconData icon,
-    required Color color,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3), width: 1),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Icon(
-              icon,
-              color: Colors.white,
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  amount,
-                  style: TextStyle(
-                    color: color,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
