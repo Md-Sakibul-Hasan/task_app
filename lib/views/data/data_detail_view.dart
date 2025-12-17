@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../controllers/data_detail_controller.dart';
 import '../../widgets/circular_meter_widget.dart';
 import '../../widgets/custom_app_bar.dart';
+import '../../widgets/custom_date_picker.dart';
 import '../../widgets/custom_radio_button.dart';
 import '../../widgets/energy_chart_widget.dart';
 
@@ -293,40 +294,136 @@ class DataDetailView extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 12),
+          // Date Pickers - Only visible when Custom Date Data is selected
+          Obx(
+            () => !controller.isTodayData.value
+                ? CustomDatePicker(
+                    onSearchPressed: () {
+                      controller.searchCustomDateData();
+                    },
+                  )
+                : const SizedBox.shrink(),
+          ),
+          Obx(
+            () => !controller.isTodayData.value
+                ? const SizedBox(height: 15)
+                : const SizedBox(height: 10),
+          ),
           // Energy Chart Section
-          EnergyChartWidget(
-            totalEnergy: '5.53 kW',
-            dataItems: const [
-              EnergyDataItem(
-                label: 'Data A',
-                color: Color(0xFF3B82F6),
-                data: '2798.50',
-                percentage: '29.53%',
-                cost: '35689',
-              ),
-              EnergyDataItem(
-                label: 'Data B',
-                color: Color(0xFF06B6D4),
-                data: '72598.50',
-                percentage: '35.39%',
-                cost: '5259689',
-              ),
-              EnergyDataItem(
-                label: 'Data C',
-                color: Color(0xFF8B5CF6),
-                data: '6598.36',
-                percentage: '83.90%',
-                cost: '5698756',
-              ),
-              EnergyDataItem(
-                label: 'Data D',
-                color: Color(0xFFF59E0B),
-                data: '6598.26',
-                percentage: '36.59%',
-                cost: '356987',
-              ),
-            ],
+          Obx(
+            () {
+              if (controller.isTodayData.value) {
+                return const EnergyChartWidget(
+                  totalEnergy: '5.53 kW',
+                  dataItems: [
+                    EnergyDataItem(
+                      label: 'Data A',
+                      color: Color(0xFF3B82F6),
+                      data: '2798.50',
+                      percentage: '29.53%',
+                      cost: '35689',
+                    ),
+                    EnergyDataItem(
+                      label: 'Data B',
+                      color: Color(0xFF06B6D4),
+                      data: '72598.50',
+                      percentage: '35.39%',
+                      cost: '5259689',
+                    ),
+                    EnergyDataItem(
+                      label: 'Data C',
+                      color: Color(0xFF8B5CF6),
+                      data: '6598.36',
+                      percentage: '83.90%',
+                      cost: '5698756',
+                    ),
+                    EnergyDataItem(
+                      label: 'Data D',
+                      color: Color(0xFFF59E0B),
+                      data: '6598.26',
+                      percentage: '36.59%',
+                      cost: '356987',
+                    ),
+                  ],
+                );
+              } else if (controller.isCustomDateSearched.value) {
+                return const Column(
+                  children: [
+                    EnergyChartWidget(
+                      totalEnergy: '20.05 kW',
+                      dataItems: [
+                        EnergyDataItem(
+                          label: 'Data A',
+                          color: Color(0xFF3B82F6),
+                          data: '2798.50',
+                          percentage: '29.53%',
+                          cost: '35689',
+                        ),
+                        EnergyDataItem(
+                          label: 'Data B',
+                          color: Color(0xFF06B6D4),
+                          data: '72598.50',
+                          percentage: '35.39%',
+                          cost: '5259689',
+                        ),
+                        EnergyDataItem(
+                          label: 'Data C',
+                          color: Color(0xFF8B5CF6),
+                          data: '6598.36',
+                          percentage: '83.90%',
+                          cost: '5698756',
+                        ),
+                        EnergyDataItem(
+                          label: 'Data D',
+                          color: Color(0xFFF59E0B),
+                          data: '6598.26',
+                          percentage: '36.59%',
+                          cost: '356987',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    EnergyChartWidget(
+                      totalEnergy: '5.53 kW',
+                      dataItems: [
+                        EnergyDataItem(
+                          label: 'Data A',
+                          color: Color(0xFF3B82F6),
+                          data: '1598.30',
+                          percentage: '25.40%',
+                          cost: '28459',
+                        ),
+                        EnergyDataItem(
+                          label: 'Data B',
+                          color: Color(0xFF06B6D4),
+                          data: '52398.20',
+                          percentage: '32.15%',
+                          cost: '4159689',
+                        ),
+                        EnergyDataItem(
+                          label: 'Data C',
+                          color: Color(0xFF8B5CF6),
+                          data: '5298.45',
+                          percentage: '78.25%',
+                          cost: '4598756',
+                        ),
+                        EnergyDataItem(
+                          label: 'Data D',
+                          color: Color(0xFFF59E0B),
+                          data: '4598.15',
+                          percentage: '32.45%',
+                          cost: '296987',
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              } else {
+                // Show nothing for Custom Date before search
+                return const SizedBox.shrink();
+              }
+            },
           ),
           const SizedBox(height: 30)
         ],

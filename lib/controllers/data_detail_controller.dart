@@ -5,6 +5,7 @@ class DataDetailController extends GetxController {
   // Observable state
   final RxBool isDataView = true.obs;
   final RxBool isTodayData = true.obs;
+  final RxBool isCustomDateSearched = false.obs;
 
   @override
   void onInit() {
@@ -24,10 +25,19 @@ class DataDetailController extends GetxController {
   // Switch to Today Data
   void switchToTodayData() {
     isTodayData.value = true;
+    isCustomDateSearched.value = false;
   }
 
   // Switch to Custom Date Data
   void switchToCustomDate() {
     isTodayData.value = false;
+    isCustomDateSearched.value = false;
+  }
+
+  // Handle custom date search
+  void searchCustomDateData() {
+    if (!isTodayData.value) {
+      isCustomDateSearched.value = true;
+    }
   }
 }
