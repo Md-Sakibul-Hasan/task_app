@@ -36,7 +36,9 @@ class DataDetailView extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 children: [
                   Obx(
-                    () => controller.isDataView.value ? _buildDataViewContent(controller) : _buildRevenueViewContent(controller),
+                    () => controller.isDataView.value
+                        ? _buildDataViewContent(controller)
+                        : _buildRevenueViewContent(controller),
                   ),
                   Positioned(
                     top: -26,
@@ -61,7 +63,8 @@ class DataDetailView extends StatelessWidget {
                                 onTap: () => controller.switchToDataView(),
                                 borderRadius: BorderRadius.circular(25),
                                 child: Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 16),
                                   decoration: BoxDecoration(
                                     color: Colors.transparent,
                                     borderRadius: BorderRadius.circular(25),
@@ -75,7 +78,9 @@ class DataDetailView extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                            color: controller.isDataView.value ? const Color(0xFF0096FC) : const Color(0xFF9CA3AF),
+                                            color: controller.isDataView.value
+                                                ? const Color(0xFF0096FC)
+                                                : const Color(0xFF9CA3AF),
                                             width: 1,
                                           ),
                                         ),
@@ -84,7 +89,8 @@ class DataDetailView extends StatelessWidget {
                                                 child: Container(
                                                   width: 12,
                                                   height: 12,
-                                                  decoration: const BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: Color(0xFF0096FC),
                                                   ),
@@ -94,7 +100,8 @@ class DataDetailView extends StatelessWidget {
                                                 child: Container(
                                                   width: 11,
                                                   height: 11,
-                                                  decoration: const BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: Color(0xFFA5A7B9),
                                                   ),
@@ -106,9 +113,14 @@ class DataDetailView extends StatelessWidget {
                                         'Data View',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          color: controller.isDataView.value ? const Color(0xFF0096FC) : const Color(0xFF6B7280),
+                                          color: controller.isDataView.value
+                                              ? const Color(0xFF0096FC)
+                                              : const Color(0xFF6B7280),
                                           fontSize: 15,
-                                          fontWeight: controller.isDataView.value ? FontWeight.w600 : FontWeight.w500,
+                                          fontWeight:
+                                              controller.isDataView.value
+                                                  ? FontWeight.w600
+                                                  : FontWeight.w500,
                                         ),
                                       ),
                                     ],
@@ -123,7 +135,8 @@ class DataDetailView extends StatelessWidget {
                                 onTap: () => controller.switchToRevenueView(),
                                 borderRadius: BorderRadius.circular(25),
                                 child: Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 16),
                                   decoration: BoxDecoration(
                                     color: Colors.transparent,
                                     borderRadius: BorderRadius.circular(25),
@@ -137,7 +150,9 @@ class DataDetailView extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                            color: !controller.isDataView.value ? const Color(0xFF0096FC) : const Color(0xFF9CA3AF),
+                                            color: !controller.isDataView.value
+                                                ? const Color(0xFF0096FC)
+                                                : const Color(0xFF9CA3AF),
                                             width: 1,
                                           ),
                                         ),
@@ -146,7 +161,8 @@ class DataDetailView extends StatelessWidget {
                                                 child: Container(
                                                   width: 11,
                                                   height: 11,
-                                                  decoration: const BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: Color(0xFF0096FC),
                                                   ),
@@ -156,7 +172,8 @@ class DataDetailView extends StatelessWidget {
                                                 child: Container(
                                                   width: 12,
                                                   height: 12,
-                                                  decoration: const BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: Color(0xFFA5A7B9),
                                                   ),
@@ -168,9 +185,14 @@ class DataDetailView extends StatelessWidget {
                                         'Revenue View',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          color: !controller.isDataView.value ? const Color(0xFF0096FC) : const Color(0xFF6B7280),
+                                          color: !controller.isDataView.value
+                                              ? const Color(0xFF0096FC)
+                                              : const Color(0xFF6B7280),
                                           fontSize: 15,
-                                          fontWeight: !controller.isDataView.value ? FontWeight.w600 : FontWeight.w500,
+                                          fontWeight:
+                                              !controller.isDataView.value
+                                                  ? FontWeight.w600
+                                                  : FontWeight.w500,
                                         ),
                                       ),
                                     ],
@@ -211,21 +233,40 @@ class DataDetailView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Circular Progress Meter
-          const CircularMeterWidget(
-            progress: 0.65,
-            value: '55.00',
-            unit: 'kWh/Sqft',
-            width: 200,
-            height: 200,
-            backgroundColor: Color(0xFFE0F2FF),
-            progressColor: Color(0xFF4E91FD),
-            strokeWidth: 16,
-            valueFontSize: 20,
-            unitFontSize: 14,
-            valueColor: Colors.black,
-            unitColor: Colors.black,
-            valueFontWeight: FontWeight.bold,
-            unitFontWeight: FontWeight.w500,
+          Obx(
+            () => controller.isTodayData.value
+                ? const CircularMeterWidget(
+                    progress: 0.65,
+                    value: '55.00',
+                    unit: 'kWh/Sqft',
+                    width: 200,
+                    height: 200,
+                    backgroundColor: Color(0xFFE0F2FF),
+                    progressColor: Color(0xFF4E91FD),
+                    strokeWidth: 16,
+                    valueFontSize: 20,
+                    unitFontSize: 14,
+                    valueColor: Colors.black,
+                    unitColor: Colors.black,
+                    valueFontWeight: FontWeight.bold,
+                    unitFontWeight: FontWeight.w500,
+                  )
+                : const CircularMeterWidget(
+                    progress: 0.67,
+                    value: '57.00',
+                    unit: 'kWh/Sqft',
+                    width: 200,
+                    height: 200,
+                    backgroundColor: Color(0xFFE0F2FF),
+                    progressColor: Color(0xFF4E91FD),
+                    strokeWidth: 16,
+                    valueFontSize: 20,
+                    unitFontSize: 14,
+                    valueColor: Colors.black,
+                    unitColor: Colors.black,
+                    valueFontWeight: FontWeight.bold,
+                    unitFontWeight: FontWeight.w500,
+                  ),
           ),
           const SizedBox(height: 30),
           // Toggle buttons - Today Data / Custom Date Data
