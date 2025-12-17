@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import '../models/data_item_model.dart';
 import '../models/menu_item_model.dart';
 import '../views/menu/menu_detail_view.dart';
+import '../views/data/data_detail_view.dart';
+import '../bindings/data_detail_binding.dart';
 
 class HomeController extends GetxController {
   // Observable state
@@ -34,10 +36,10 @@ class HomeController extends GetxController {
 
   // Handle data item tap
   void onDataItemTap(DataItemModel item) {
-    Get.snackbar(
-      item.title,
-      'Status: ${item.statusText}',
-      snackPosition: SnackPosition.BOTTOM,
+    Get.to(
+      () => const DataDetailView(),
+      binding: DataDetailBinding(),
+      arguments: item,
     );
   }
 
