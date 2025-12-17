@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../controllers/data_detail_controller.dart';
 import '../../widgets/circular_meter_widget.dart';
 import '../../widgets/custom_app_bar.dart';
+import '../../widgets/custom_radio_button.dart';
 
 class DataDetailView extends StatelessWidget {
   const DataDetailView({super.key});
@@ -206,11 +207,11 @@ class DataDetailView extends StatelessWidget {
           width: 1,
         ),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Circular Progress Meter
-          CircularMeterWidget(
+          const CircularMeterWidget(
             progress: 0.65,
             value: '55.00',
             unit: 'kWh/Sqft',
@@ -226,7 +227,31 @@ class DataDetailView extends StatelessWidget {
             valueFontWeight: FontWeight.bold,
             unitFontWeight: FontWeight.w500,
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
+          // Toggle buttons - Today Data / Custom Date Data
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Today Data button
+              Obx(
+                () => CustomRadioButton(
+                  label: 'Today Data',
+                  isSelected: controller.isTodayData.value,
+                  onTap: () => controller.switchToTodayData(),
+                ),
+              ),
+              const SizedBox(width: 24),
+              // Custom Date Data button
+              Obx(
+                () => CustomRadioButton(
+                  label: 'Custom Date Data',
+                  isSelected: !controller.isTodayData.value,
+                  onTap: () => controller.switchToCustomDate(),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 30),
           // Additional content can go here
         ],
       ),
