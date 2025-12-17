@@ -1,5 +1,6 @@
 // Widget - Custom App Bar
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -7,7 +8,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showNotification;
   final VoidCallback? onBackPressed;
   final VoidCallback? onNotificationPressed;
-  final bool hasNotificationBadge;
 
   const CustomAppBar({
     super.key,
@@ -16,14 +16,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showNotification = true,
     this.onBackPressed,
     this.onNotificationPressed,
-    this.hasNotificationBadge = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
       elevation: 0,
+      scrolledUnderElevation: 0,
       centerTitle: true,
       leading: showBackButton
           ? IconButton(
@@ -48,26 +49,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Stack(
                 children: [
                   IconButton(
-                    icon: const Icon(
-                      Icons.notifications_outlined,
-                      color: Colors.black,
-                      size: 24,
+                    icon: SvgPicture.asset(
+                      'assets/icons/notification_icon.svg',
                     ),
                     onPressed: onNotificationPressed,
                   ),
-                  if (hasNotificationBadge)
-                    Positioned(
-                      right: 11,
-                      top: 11,
-                      child: Container(
-                        width: 8,
-                        height: 8,
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
+                  Positioned(
+                    right: 15,
+                    top: 16,
+                    child: Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
                       ),
                     ),
+                  ),
                 ],
               ),
             ]
