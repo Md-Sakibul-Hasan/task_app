@@ -6,6 +6,7 @@ class DataDetailController extends GetxController {
   final RxBool isDataView = true.obs;
   final RxBool isTodayData = true.obs;
   final RxBool isCustomDateSearched = false.obs;
+  final RxBool isDataCostInfoExpanded = true.obs;
 
   @override
   void onInit() {
@@ -39,5 +40,10 @@ class DataDetailController extends GetxController {
     if (!isTodayData.value) {
       isCustomDateSearched.value = true;
     }
+  }
+
+  // Toggle Data & Cost Info expansion
+  void toggleDataCostInfo() {
+    isDataCostInfoExpanded.value = !isDataCostInfoExpanded.value;
   }
 }

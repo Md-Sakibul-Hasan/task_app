@@ -1,5 +1,6 @@
 // View - Data Detail Screen UI
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/data_detail_controller.dart';
@@ -437,7 +438,7 @@ class DataDetailView extends StatelessWidget {
       constraints: BoxConstraints(
         minHeight: MediaQuery.of(Get.context!).size.height,
       ),
-      padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+      padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -446,6 +447,181 @@ class DataDetailView extends StatelessWidget {
           width: 1,
         ),
       ),
+      child: Column(
+        children: [
+          const CircularMeterWidget(
+            progress: 0.67,
+            value: '8897455',
+            unit: 'tk',
+            width: 200,
+            height: 200,
+            backgroundColor: Color(0xFFE0F2FF),
+            progressColor: Color(0xFF4E91FD),
+            strokeWidth: 16,
+            valueFontSize: 20,
+            unitFontSize: 14,
+            valueColor: Colors.black,
+            unitColor: Colors.black,
+            valueFontWeight: FontWeight.bold,
+            unitFontWeight: FontWeight.w500,
+          ),
+          const SizedBox(height: 30),
+          // Data & Cost Info Section
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFFB6B8D0), width: 1),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Header
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: Color(0xFFB6B8D0), width: 1),
+                    ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/solar_chart.svg',
+                        width: 18,
+                        height: 18,
+                      ),
+                      const SizedBox(width: 8),
+                      const Text(
+                        'Data & Cost Info',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const Spacer(),
+                      Obx(
+                        () => InkWell(
+                          onTap: () => controller.toggleDataCostInfo(),
+                          child: SvgPicture.asset(
+                            controller.isDataCostInfoExpanded.value
+                                ? 'assets/icons/arrows_up.svg'
+                                : 'assets/icons/arrows_down.svg',
+                            height: 26,
+                            width: 26,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                // Content
+                Obx(
+                  () => controller.isDataCostInfoExpanded.value
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
+                          child: Column(
+                            children: [
+                              _buildDataCostItem('Data 1', '2798.50 (29.53%)',
+                                  'Cost 1', '35689 ৳'),
+                              const SizedBox(height: 16),
+                              _buildDataCostItem('Data 2', '2798.50 (29.53%)',
+                                  'Cost 2', '35689 ৳'),
+                              const SizedBox(height: 16),
+                              _buildDataCostItem('Data 3', '2798.50 (29.53%)',
+                                  'Cost 3', '35689 ৳'),
+                              const SizedBox(height: 16),
+                              _buildDataCostItem('Data 4', '2798.50 (29.53%)',
+                                  'Cost 4', '35689 ৳'),
+                            ],
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDataCostItem(
+    String dataLabel,
+    String dataValue,
+    String costLabel,
+    String costValue,
+  ) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              dataLabel,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Text(
+              ':',
+              style: TextStyle(
+                fontSize: 12,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              flex: 2,
+              child: Text(
+                dataValue,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF1F2937),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Row(
+          children: [
+            Text(
+              costLabel,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Text(
+              ':',
+              style: TextStyle(
+                fontSize: 12,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              costValue,
+              style: const TextStyle(
+                fontSize: 13,
+                color: Color(0xFF1F2937),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

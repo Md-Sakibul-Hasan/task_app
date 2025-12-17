@@ -123,7 +123,6 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           },
         );
         if (pickedDate != null) {
-          // Handle date selection
           setState(() {
             if (isFromDate) {
               fromDate = pickedDate;
