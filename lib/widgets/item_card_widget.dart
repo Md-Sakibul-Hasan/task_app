@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ItemCardWidget extends StatelessWidget {
   final String title;
   final String? statusText;
   final Color? statusColor;
-  final IconData icon;
+  final String icon;
   final Color iconBackgroundColor;
   final Color titleIconColor;
   final String data1Label;
@@ -34,7 +35,7 @@ class ItemCardWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 8),
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: const Color(0xFFE5F4FE),
           borderRadius: BorderRadius.circular(8),
@@ -43,20 +44,10 @@ class ItemCardWidget extends StatelessWidget {
         child: Row(
           children: [
             // Icon
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: iconBackgroundColor,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Icon(
-                icon,
-                color: Colors.white,
-                size: 24,
-              ),
+            Image.asset(
+              icon,
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 10),
             // Data
             Expanded(
               child: Column(

@@ -6,7 +6,7 @@ class DataItemModel {
   final String statusText;
   final Color statusColor;
   final bool isActive;
-  final IconData icon;
+  final String icon;
   final Color iconBackgroundColor;
   final Color titleIconColor;
   final String data1Label;
@@ -38,7 +38,7 @@ class DataItemModel {
         statusText: 'Active',
         statusColor: const Color(0xFF0096FC),
         isActive: true,
-        icon: Icons.solar_power,
+        icon: "assets/images/solar_cell.png",
         iconBackgroundColor: const Color(0xFF5DADE2),
         titleIconColor: const Color(0xFF7EC8E3),
         data1Label: 'Data 1',
@@ -52,7 +52,7 @@ class DataItemModel {
         statusText: 'Active',
         statusColor: const Color(0xFF0096FC),
         isActive: true,
-        icon: Icons.battery_charging_full,
+        icon: "assets/images/bettery.png",
         iconBackgroundColor: const Color(0xFFFF9500),
         titleIconColor: const Color(0xFFFB902E),
         data1Label: 'Data 1',
@@ -66,7 +66,7 @@ class DataItemModel {
         statusText: 'Inactive',
         statusColor: const Color(0xFFFF3B30),
         isActive: false,
-        icon: Icons.power,
+        icon: "assets/images/power.png",
         iconBackgroundColor: const Color(0xFF5DADE2),
         titleIconColor: const Color(0xFF7EC8E3),
         data1Label: 'Data 1',
@@ -80,7 +80,7 @@ class DataItemModel {
         statusText: 'Inactive',
         statusColor: const Color(0xFFFF3B30),
         isActive: false,
-        icon: Icons.power,
+        icon: "assets/images/solar_cell.png",
         iconBackgroundColor: const Color(0xFF5DADE2),
         titleIconColor: const Color(0xFF7EC8E3),
         data1Label: 'Data 1',
