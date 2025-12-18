@@ -38,7 +38,7 @@ class ItemCardWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: const Color(0xFFE5F4FE),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(4),
           border: Border.all(color: const Color(0xFFA5A7B9), width: 1),
         ),
         child: Row(
@@ -46,6 +46,8 @@ class ItemCardWidget extends StatelessWidget {
             // Icon
             Image.asset(
               icon,
+              width: 24,
+              height: 24,
             ),
             const SizedBox(width: 10),
             // Data
@@ -61,7 +63,7 @@ class ItemCardWidget extends StatelessWidget {
                         height: 12,
                         decoration: BoxDecoration(
                           color: titleIconColor,
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(2),
                         ),
                       ),
                       const SizedBox(width: 8),
