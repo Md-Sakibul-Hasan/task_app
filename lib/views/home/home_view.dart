@@ -301,7 +301,6 @@ class HomeView extends StatelessWidget {
                         return MenuCardWidget(
                           title: item.title,
                           icon: item.icon,
-                          iconColor: item.iconColor,
                           onTap: () => controller.onMenuItemTap(item),
                         );
                       },

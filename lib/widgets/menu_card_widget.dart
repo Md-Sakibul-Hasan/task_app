@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MenuCardWidget extends StatelessWidget {
   final String title;
-  final IconData icon;
-  final Color iconColor;
+  final String icon;
+
   final VoidCallback? onTap;
 
   const MenuCardWidget({
     super.key,
     required this.title,
     required this.icon,
-    required this.iconColor,
     this.onTap,
   });
 
@@ -31,18 +31,10 @@ class MenuCardWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: 36,
-              height: 36,
-              decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                icon,
-                color: iconColor,
-                size: 20,
-              ),
+            Image.asset(
+              icon,
+              width: 24,
+              height: 24,
             ),
             const SizedBox(width: 12),
             Flexible(
