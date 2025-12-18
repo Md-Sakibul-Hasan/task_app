@@ -6,6 +6,7 @@ class ItemCardWidget extends StatelessWidget {
   final Color? statusColor;
   final IconData icon;
   final Color iconBackgroundColor;
+  final Color titleIconColor;
   final String data1Label;
   final String data1Value;
   final String data2Label;
@@ -19,6 +20,7 @@ class ItemCardWidget extends StatelessWidget {
     this.statusColor,
     required this.icon,
     this.iconBackgroundColor = const Color(0xFFFF9500),
+    this.titleIconColor = const Color(0xFF7EC8E3),
     required this.data1Label,
     required this.data1Value,
     required this.data2Label,
@@ -63,6 +65,15 @@ class ItemCardWidget extends StatelessWidget {
                   // Title with status
                   Row(
                     children: [
+                      Container(
+                        width: 12,
+                        height: 12,
+                        decoration: BoxDecoration(
+                          color: titleIconColor,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
                       Text(
                         title,
                         style: const TextStyle(
@@ -91,7 +102,7 @@ class ItemCardWidget extends StatelessWidget {
                       Text(
                         '$data1Label : ',
                         style: const TextStyle(
-                          color: Colors.grey,
+                          color: Color(0xFFA5A7B9),
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),

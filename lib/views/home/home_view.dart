@@ -46,10 +46,13 @@ class HomeView extends StatelessWidget {
                                 // TODO: Switch to Summary tab
                               },
                               child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
                                 decoration: const BoxDecoration(
                                   color: Color(0xFF0096FC),
-                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(12),
+                                      topRight: Radius.circular(12)),
                                 ),
                                 child: const Text(
                                   'Summary',
@@ -69,7 +72,8 @@ class HomeView extends StatelessWidget {
                                 // TODO: Switch to SLD tab
                               },
                               child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
                                 child: const Text(
                                   'SLD',
                                   textAlign: TextAlign.center,
@@ -88,7 +92,8 @@ class HomeView extends StatelessWidget {
                                 // TODO: Switch to Data tab
                               },
                               child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
                                 child: const Text(
                                   'Data',
                                   textAlign: TextAlign.center,
@@ -144,7 +149,8 @@ class HomeView extends StatelessWidget {
                                       value: 1,
                                       strokeWidth: 20,
                                       backgroundColor: Colors.grey[200],
-                                      valueColor: const AlwaysStoppedAnimation<Color>(
+                                      valueColor:
+                                          const AlwaysStoppedAnimation<Color>(
                                         Color(0xFF398FC9),
                                       ),
                                     ),
@@ -177,7 +183,8 @@ class HomeView extends StatelessWidget {
                             ),
                             // Source/Load Toggle
                             Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 16),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               decoration: BoxDecoration(
                                 color: Colors.grey[200],
                                 borderRadius: BorderRadius.circular(25),
@@ -190,10 +197,12 @@ class HomeView extends StatelessWidget {
                                         // TODO: Switch to Source
                                       },
                                       child: Container(
-                                        padding: const EdgeInsets.symmetric(vertical: 12),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12),
                                         decoration: BoxDecoration(
                                           color: const Color(0xFF0096FC),
-                                          borderRadius: BorderRadius.circular(25),
+                                          borderRadius:
+                                              BorderRadius.circular(25),
                                         ),
                                         child: const Text(
                                           'Source',
@@ -213,7 +222,8 @@ class HomeView extends StatelessWidget {
                                         // TODO: Switch to Load
                                       },
                                       child: Container(
-                                        padding: const EdgeInsets.symmetric(vertical: 12),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12),
                                         child: const Text(
                                           'Load',
                                           textAlign: TextAlign.center,
@@ -251,12 +261,15 @@ class HomeView extends StatelessWidget {
                                       statusText: item.statusText,
                                       statusColor: item.statusColor,
                                       icon: item.icon,
-                                      iconBackgroundColor: item.iconBackgroundColor,
+                                      iconBackgroundColor:
+                                          item.iconBackgroundColor,
+                                      titleIconColor: item.titleIconColor,
                                       data1Label: item.data1Label,
                                       data1Value: item.data1Value,
                                       data2Label: item.data2Label,
                                       data2Value: item.data2Value,
-                                      onTap: () => controller.onDataItemTap(item),
+                                      onTap: () =>
+                                          controller.onDataItemTap(item),
                                     );
                                   },
                                 ),
@@ -275,7 +288,8 @@ class HomeView extends StatelessWidget {
                     () => GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 8,
