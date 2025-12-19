@@ -46,28 +46,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: showNotification
           ? [
-              Stack(
-                children: [
-                  IconButton(
+             IconButton(
                     icon: SvgPicture.asset(
                       'assets/icons/notification_icon.svg',
                     ),
                     onPressed: onNotificationPressed,
                   ),
-                  Positioned(
-                    right: 15,
-                    top: 16,
-                    child: Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        color: Colors.red,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ]
           : null,
     );

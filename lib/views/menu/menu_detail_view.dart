@@ -22,10 +22,11 @@ class MenuDetailView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(top: 15, left: 25, right: 25, bottom: 25),
+          margin:
+              const EdgeInsets.only(top: 15, left: 25, right: 25, bottom: 25),
           decoration: BoxDecoration(
             color: const Color(0xFFFFFFFF),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: const Color(0xFFB6B8D0),
               width: 1,
